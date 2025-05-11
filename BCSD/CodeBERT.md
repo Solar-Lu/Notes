@@ -1,4 +1,4 @@
-**CodeBERT: A Pre-Trained Model for Programming and Natural Languages
+**CodeBERT: A Pre-Trained Model for Programming and Natural Languages**
 
 ## 一、背景介绍
 
@@ -9,7 +9,7 @@
 ## 二、系统设计
 
   该方法是基于RoBERta
-
+![[codebert.png]]
 ### 2.1 输入输出表示
 
 输入为自然语言文本和代码的拼接序列，格式为：[CLS] w1 w2 ... wn [SEP] c1 c2 ... cm [EOS] 。其中，自然语言文本被分词为w1,w2，代码被处理为token,。输出包括每个token的上下文向量，以及CLS token用于分类任务。
@@ -26,7 +26,6 @@ CodeBERT使用双模态数据（NL-PL对）和单模态数据（无配对的代�
 
 使用两个生成器（NL生成器和PL生成器）生成替换词，训练模型判断是否为原始token。
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps3.jpg) 
 
 ### 2.4 模型微调
 
@@ -40,24 +39,23 @@ CodeBERT使用双模态数据（NL-PL对）和单模态数据（无配对的代�
 
 结果显示在使用MLM和RTD目标进行训练的时候，CodeBERT 在自然语言代码搜索任务上表现优于其他模型
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps4.jpg) 
+![]() ![[codebert-nlp.jpg]]
 
 ### 3.2 NL-PL探测
 
 在不微调参数的情况下，对自然语言和编程语言的理解能力。具体来说，给定一个 NL-PL 对，模型需要预测被掩码的 token。数据集同理于上述。对于NL，实现的是一个四选一（max,mini,less,greater)的过程，对于PL，实现的是一个二选一(max,mini)的部分，从而判断模型的准确程度。因为相比于PL, NL的语义范围更广，所以设置四选一更能检测其准确程度。结果如下：
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps5.jpg) 
+![[codebert-nlpl.jpg]] 
 
 ### 3.3 自然语言生成
 
 就给定一段代码，生成其描述的自然语言，并且使用平滑的的 BLEU-4 分数这个指标，避免因某些长 n-gram 的零匹配而导致整个 BLEU 分数失真。结果如下
-
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps6.jpg) 
-
+![[codebert-ngram.jpg]]
 ### 3.4 NPL泛化能力
 
   测试了CodeBERT在C#上的效果来展示CodeBERT应对没有见过的编程语言的能力，结果如下：
+  
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps7.jpg) 
+![[codebert-c.jpg]]
 
 由结果可以发现，code2seq的分数较高，可能是因为code2seq在其抽象语法树(AST)中使用了组合路径，而CodeBERT只接受原始代码作为输入，这可以作为一个未来的改进方向。

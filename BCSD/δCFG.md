@@ -28,7 +28,7 @@ BFSD通常将CFG作为重要特征，因为CFG能够描述函数内部基本代�
 
 为了解决这种过度依赖的问题，作者提出了δCFG解决方案，用于操纵CFG以评估和降低模型对CFG特征的依赖。δCFG包含基本块匹配算法和边匹配算法，能够在保留函数语义的同时，使函数对的CFG相同或不同。
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml3316\wps15.png) 
+![[CFG.png]] 
 
 假设有两个函数 x 和 y，它们的 CFG 不同。δCFG 会如下操作：
 

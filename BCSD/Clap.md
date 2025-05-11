@@ -1,4 +1,4 @@
-**CLAP: Learning Transferable Binary Code Representations with Natural Language Supervision
+**CLAP: Learning Transferable Binary Code Representations with Natural Language Supervision**
 ![[clap.png]]
 ## 一、背景介绍
 
@@ -32,7 +32,7 @@
 
 二进制代码与自然语言解释的对齐：通过源代码作为中介，将自然语言解释与对应的二进制代码对齐。这种对齐方式使得每个二进制代码片段都拥有一个对应的自然语言解释，从而形成大规模的对齐数据对。
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps1.jpg) 
+![[clap-align.jpg]]
 
 ### 2. 对比语言汇编预训练引擎
 
@@ -58,7 +58,7 @@ CLAPASM基于RoBERTa基础架构，包含110M参数。模型通过平均最后�
 
 对比学习：利用对比学习方法，将汇编代码编码器与预训练的文本编码器对齐。通过InfoNCE损失函数，最大化正样本对的相似度，最小化负样本对的相似度。
 
-![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps2.jpg) 
+![[clap-le.jpg]] 
 
 这部分也是我思考模型参照的部分，将汇编代码的编码器与源码编码器训练对齐。
 
