@@ -1,0 +1,63 @@
+**CodeBERT: A Pre-Trained Model for Programming and Natural Languages
+
+## 一、背景介绍
+
+ 大型预训练模型，GPT、BERT、XLNet和RoBERTa等，在过去的几年里显著提升了几乎每个NLP任务的性能。这些模型通过在大规模文本上进行自监督学习来训练深度神经网络，主要目标是语言建模及其变体。例如BERT使用掩码语言建模（MLM）目标，通过预测随机掩码的词序列中的原始词来学习更好的上下文表示。CodeBERT也采用了MLM作为其两个训练目标之一。
+
+   与此同时，预训练模型在NLP中的成功推动了多模态预训练模型的发展，这些模型学习不同模态输入之间的隐式对齐。这些模型通常从双模态数据中学习，例如语言-图像对或语言-视频对CodeBERT将NL和PL视为不同的模态，其训练数据不仅包括双模态的NL-PL对，还包括大量的单模态数据，如没有配对文档的代码。
+
+## 二、系统设计
+
+  该方法是基于RoBERta
+
+### 2.1 输入输出表示
+
+输入为自然语言文本和代码的拼接序列，格式为：[CLS] w1 w2 ... wn [SEP] c1 c2 ... cm [EOS] 。其中，自然语言文本被分词为w1,w2，代码被处理为token,。输出包括每个token的上下文向量，以及CLS token用于分类任务。
+
+### 2.2 预训练数据
+
+CodeBERT使用双模态数据（NL-PL对）和单模态数据（无配对的代码或自然语言）进行训练。数据来自GitHub存储库，共计210万双模态数据点和640万单模态代码。
+
+  在数据筛选的过程中也存在一定的规则，同bert类似，（1)每个项目应该被至少一个其他项目使用，(2)每个文档被截断到第一段），(3)小于三个标记的文档被删除，(4)小于三行的函数被删除，(5)带有子字符串“test”的函数名被删除。
+
+### 2.3 预训练
+
+15%的token被随机掩码为[MASK]，模型需要预测原始token。
+
+使用两个生成器（NL生成器和PL生成器）生成替换词，训练模型判断是否为原始token。
+
+![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps3.jpg) 
+
+### 2.4 模型微调
+
+微调 CodeBERT 通常使用 Adam 优化算法，在其预训练表示上添加任务特定的输出层来实现，如在 [CLS] token 的表示上添加全连接层和softmax层来生成相关性评分
+
+## 三、实验评估
+
+### 3.1 自然语言搜索任务
+
+ 采用CodeSearchNet 数据集，包含 2.1M 双模态数据点和 6.4M 单模态代码
+
+结果显示在使用MLM和RTD目标进行训练的时候，CodeBERT 在自然语言代码搜索任务上表现优于其他模型
+
+![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps4.jpg) 
+
+### 3.2 NL-PL探测
+
+在不微调参数的情况下，对自然语言和编程语言的理解能力。具体来说，给定一个 NL-PL 对，模型需要预测被掩码的 token。数据集同理于上述。对于NL，实现的是一个四选一（max,mini,less,greater)的过程，对于PL，实现的是一个二选一(max,mini)的部分，从而判断模型的准确程度。因为相比于PL, NL的语义范围更广，所以设置四选一更能检测其准确程度。结果如下：
+
+![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps5.jpg) 
+
+### 3.3 自然语言生成
+
+就给定一段代码，生成其描述的自然语言，并且使用平滑的的 BLEU-4 分数这个指标，避免因某些长 n-gram 的零匹配而导致整个 BLEU 分数失真。结果如下
+
+![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps6.jpg) 
+
+### 3.4 NPL泛化能力
+
+  测试了CodeBERT在C#上的效果来展示CodeBERT应对没有见过的编程语言的能力，结果如下：
+
+![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml23528\wps7.jpg) 
+
+由结果可以发现，code2seq的分数较高，可能是因为code2seq在其抽象语法树(AST)中使用了组合路径，而CodeBERT只接受原始代码作为输入，这可以作为一个未来的改进方向。
