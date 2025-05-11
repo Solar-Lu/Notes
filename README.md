@@ -1,2 +1,2 @@
 # Notes
-Some reading notes
+Tiny Little Notes😄
