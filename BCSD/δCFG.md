@@ -10,11 +10,11 @@ BFSD通常将CFG作为重要特征，因为CFG能够描述函数内部基本代�
 
 解释模块explainer主要由特征规范和局部近似两个部分。
 
-**1 特征规范
+**1 特征规范**
 
 对于语义特征部分，将二进制代码转化成汇编指令，（因为直接分析操作数操作码的组合列举指令对于语义的理解比较困难），所以将指令分类成包括调用、跳转、算数、数据传输以及其他五个特征并且计算语义分数；而对于CFG特征包括节点和边的数量以及图之间的相似性（考虑到存在节点和边数量相同但是结构不同的两个图）。
 
-**2 局部相似
+**2 局部相似**
 
 在生成局部实例部分，通过删除语义指令特征的方式来影响CFG的就够（如CFG的边和节点）形成新的数据，并且计算新的函数和旧的之间的相似度。并且在生成每个局部实例时，设定一个阈值![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml3316\wps12.jpg)来限制扰动的程度，确保生成的实例![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml3316\wps13.jpg)仍在![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml3316\wps14.jpg)的邻域内
 
@@ -44,7 +44,7 @@ l 添加空基本块：如果 x 的基本块数量多于 y，δCFG 可能在 y 
 
 作者提出了四个问题，并且逐一进行了实验解答
 #### RQ1
-**What is the impact on model decisions when a pair of functions with identical CFGs are modified to have different CFGs?（相同的控制流图改成不同的，语义不变）
+**What is the impact on model decisions when a pair of functions with identical CFGs are modified to have different CFGs?（相同的控制流图改成不同的，语义不变）**
 
 **实验设置**：
 
@@ -66,7 +66,7 @@ l 添加空基本块：如果 x 的基本块数量多于 y，δCFG 可能在 y 
 - 不依赖 CFG 的解决方案（如 SAFE, Trex, jTrans）表现出较低的减少比例和错误率，这些解决方案对 CFG 的依赖较弱。
 
 #### RQ2
-**What is the impact on model decisions when a pair of functions with different CFGs are modified to have identical CFGs?（不同的控制流图改成相同的，语义不变）
+**What is the impact on model decisions when a pair of functions with different CFGs are modified to have identical CFGs?（不同的控制流图改成相同的，语义不变）**
 
 **实验设置**：
 
@@ -91,14 +91,14 @@ l 添加空基本块：如果 x 的基本块数量多于 y，δCFG 可能在 y 
 - 在所有解决方案中，Top-1 率在池大小为 128 时仍然超过 20%。不依赖 CFG 的解决方案（如 SAFE, Trex, jTrans）表现较为稳定，依赖性较低。
 
 #### RQ3
-**How come these ML-BFSD solutions rely heavily on CFGs?（原因分析）
+**How come these ML-BFSD solutions rely heavily on CFGs?（原因分析）**
 
 - **设计缺陷**：许多 ML-BFSD 解决方案在设计上存在缺陷，导致语义学习不足。例如，Gemini等方法手动指定特征，导致信息丢失；Genius等一些方法未能充分捕捉指令间的关系，只考虑块内不考虑块间的特征。
 
 - **训练集偏差**：训练集中的函数对分布存在偏差，导致模型过度依赖 CFG 特征。训练集中具有相同 CFG 而语义不同的类型数量极少；这种偏差导致模型倾向于将相同 CFG 的函数对识别为语义相同从而导致对于CFG的依赖性。
 
 #### RQ4
-**Can our δCFG be utilized to mitigate the overreliance and enhance the performance of ML-BFSD solutions?（如何减轻对CFG的过度依赖）
+**Can our δCFG be utilized to mitigate the overreliance and enhance the performance of ML-BFSD solutions?（如何减轻对CFG的过度依赖）**
 
 **实验设置**：
 
