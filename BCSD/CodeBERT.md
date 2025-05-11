@@ -1,4 +1,4 @@
-**CodeBERT: A Pre-Trained Model for Programming and Natural Languages
+** CodeBERT: A Pre-Trained Model for Programming and Natural Languages
 
 ## 一、背景介绍
 
