@@ -32,7 +32,7 @@
  完整性completeness：约束是否不会排除与解决错误无关的输入空间，假设测试用例不满足约束c即应当触发错误e，完整性表示的是互补集中触发错误的比例，比例越高，则不满足约束的测试用例越多，完整性越强。
 
 适应度函数的计算公式为：
-![DeepConstr](jpg/deepconstr.png)
+![DeepConstr](jpg/deepconstr.jpg)
 ![](file:///C:\Users\admin\AppData\Local\Temp\ksohtml22364\wps1.jpg) 
 
 该自适应函数是取适应度有效性和完整性的调和平均数，取值0－1，接近1则约束的完整性和有效性越高，约束的质量也就越高。
