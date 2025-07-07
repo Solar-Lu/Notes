@@ -13,6 +13,5 @@ Tiny Little Notes😄
   
 - DL_framework/
   - DeepConstr.md
-  - 欢迎.md
 
 - README.md
