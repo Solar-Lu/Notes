@@ -100,13 +100,15 @@ MalHug在语义级分析和数据集脚本检测方面优于现有工具（如Pi
 
 ![MalHug实验1 - Bestpz/best测试结果](jpg/malhug3.png)
 
+![MalHug实验1 - Bestpz/best测试结果](jpg/malhug4.png)
+
 ### 二、star23/baller10
 
 在本机上进行了该反向shell的测试，在本机运行恶意软件，在服务器192.168.9.147监听，收到了来自电脑本机的连接请求。
 
 **攻击者即可操作被监听端的终端，从而了解其信息并发起攻击**
 
-![MalHug实验2 - 反向Shell测试](jpg/malhug4.png)
+![MalHug实验2 - 反向Shell测试](jpg/malhug0.png)
 
 ![MalHug实验2 - 反向Shell测试](jpg/malhug5.png)
 

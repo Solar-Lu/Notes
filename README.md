@@ -15,6 +15,6 @@ Tiny Little Notes😄
   - DeepConstr.md
   - 综述.md
   - Deep learning library testing.md
-  - MalHug.md
+  - MalHug (CASE #1 #2 #3).md
 
 - README.md
