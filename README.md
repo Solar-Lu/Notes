@@ -16,5 +16,6 @@ Tiny Little Notes😄
   - 综述.md
   - Deep learning library testing.md
   - MalHug (CASE #1 #2 #3).md
+  - TensorAbuse.md
 
 - README.md
