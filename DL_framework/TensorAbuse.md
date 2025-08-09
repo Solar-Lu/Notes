@@ -111,10 +111,16 @@
 例如这个，python层通过`pywrap_tfe.TFE_Py_FastPathExecute`或`_op_def_library._apply_op_helper`调用C++的`XlaCompileOnDemandOp::Compute`方法，C++层根据设备类型选择PJRT或传统XLA编译器进行即时编译和执行，实现了从用户友好的Python接口到高性能底层实现的完整调用。
 
 ### 2. LLM的CapAnalysis
-RpcClient操作的网络访问能力
+RpcClient操作的网络访问能力，并且进行了可视化，说明存在一定量的高危漏洞
 ![LLM的CapAnalysis](jpg/tensor(5).png)
+![LLM的CapAnalysis](jpg/tensor(7).png)
+![LLM的CapAnalysis](jpg/tensor(8).png)
+
 ### 3. TensorAbuse攻击检测
 
 ![TensorAbuse攻击检测](jpg/tensor(4).png)
 
 在攻击检测中，发现一个高危漏洞：攻击者尝试读取系统文件 `/etc/passwd`，即用户密码（并且使用base64编码来隐藏恶意字符串）；于此同时，发现一个中危漏洞攻击者使用printv2操作用户输出格式化的字符串，可能会导致信息泄露。
+
+![TensorAbuse攻击检测](jpg/tensor(6).png)
+tensorflow的框架问题的检测，还检测到了一个h5 model的 Lambda 层的高危漏洞，能定位到特定的函数名和模块.
