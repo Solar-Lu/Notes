@@ -17,5 +17,6 @@ Tiny Little Notes😄
   - [Deep learning library test.md](./DL_framework/Deep%20learning%20library%20test.md)
   - [MalHug.md](./DL_framework/MalHug.md)
   - [TensorAbuse.md](./DL_framework/TensorAbuse.md)
+  - [Evilmodel.md](./DL_framework/Evilmodel.md)
 
 - [README.md](README.md)
