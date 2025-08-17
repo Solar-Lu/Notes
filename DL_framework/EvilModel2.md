@@ -48,22 +48,22 @@
 ### 5.1 模型性能基准测试
 - 原始ResNet50在ImageNet验证集上的准确率：**76.146%**
 
-![基准测试结果](png/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(1).png)
+![基准测试结果](jpg/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(1).png)
 
 ### 5.2 恶意软件嵌入
 此次不是使用任意的模型，而是将Lazarus恶意软件嵌入到ResNet50模型中
 
 - **Half Substitution**：逐层遍历模型参数，将恶意软件字节替换到参数的后2字节位置
 
-![Half Substitution](png/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(2).png)
+![Half Substitution](jpg/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(2).png)
 
 - **Fast Substitution**：强制设置指数位为0x3C（正数）或0xBC（负数），将恶意软件字节替换到参数的后3字节位置
 
-![Fast Substitution](png/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(3).png)
+![Fast Substitution](jpg/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(3).png)
 
 - **MSB Substitution**：保留第1字节（符号位+指数位），替换后3字节
 
-![MSB Substitution](png/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(4).png)
+![MSB Substitution](jpg/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(4).png)
 
 ### 5.3 嵌入后模型评估
 针对这个恶意模型的嵌入其差别都很小，但Half的方法最小
@@ -75,5 +75,5 @@
 ### 5.4 恶意软件提取验证
 从嵌入的模型中成功提取出完整的恶意软件，三种方法的SHA256哈希值都可以完全匹配：
 
-![提取验证结果](png/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(5).png)
+![提取验证结果](jpg/2025.8.11-8.17(Evilmodel2)/Evilmodel2%20(5).png)
 
