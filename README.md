@@ -18,6 +18,8 @@ Tiny Little Notes😄
   - [MalHug.md](./DL_framework/MalHug.md)
   - [TensorAbuse.md](./DL_framework/TensorAbuse.md)
   - [Evilmodel.md](./DL_framework/Evilmodel.md)
-  - [Evilmodel2.md](./DL_framework/EvilModel2.md)
+  - [EvilModel2.md](./DL_framework/EvilModel2.md)
+  - [Tensorscope.md](./DL_framework/Tensorscope.md)
+  
 
 - [README.md](README.md)
