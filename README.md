@@ -23,7 +23,6 @@ Tiny Little Notes😄
   - [EvilModel2.md](./DL_framework/EvilModel2.md) - 恶意模型检测方法2
   - [Tensorscope.md](./DL_framework/Tensorscope.md) - TensorFlow安全分析工具
   - [CRADLE.md](./DL_framework/CRADLE.md) - 跨后端验证检测深度学习库漏洞
-  - [CRADLE/](./DL_framework/CRADLE/) - CRADLE相关子目录
 
 ### 🛡️ CVE (Common Vulnerabilities and Exposures)
 - [CVE/](./CVE/)
