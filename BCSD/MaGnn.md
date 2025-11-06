@@ -87,5 +87,5 @@ MaGnn模型的核心思想总结为以下几个关键部分：
 
    通过MRR结果和Recall@k结果显示在和B2SMatch的数据相比存在差距，所以可以作为一个baseline作为对照：
 
-![MaGnn](png/MaGnn.jpg)
+![MaGnn](png/MaGnn.png)
 
