@@ -1,4 +1,3 @@
-```markdown
 # ContraBin 思路总结
 
 ContraBin 的思想比较有意思，是通过语义建立二进制和源码之间的桥梁。阅读的思路总结如下：
