@@ -7,7 +7,9 @@ Tiny Little Notes😄
 - [BCSD/](./BCSD/)
   - [Clap.md](./BCSD/Clap.md) - 基于对比学习的二进制代码相似性检测
   - [CodeBERT.md](./BCSD/CodeBERT.md) - 基于BERT的代码表示学习
+  - [ContraBin.md](./BCSD/ContraBin.md) - 通过对比学习建立二进制和源码之间的语义桥梁
   - [discovRE.md](./BCSD/discovRE.md) - 二进制代码相似性检测方法
+  - [MaGnn.md](./BCSD/MaGnn.md) - 基于孪生网络的二进制与源代码匹配模型
   - [MIRROR.md](./BCSD/MIRROR.md) - 镜像学习在代码相似性检测中的应用
   - [VLM.md](./BCSD/VLM.md) - 视觉语言模型在代码分析中的应用
   - [δCFG.md](./BCSD/δCFG.md) - 基于控制流图差异的代码分析
